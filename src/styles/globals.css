@@ -42,3 +42,9 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+@layer base {
+  html {
+    font-family: Poppins, system-ui, sans-serif;
+  }
+}
