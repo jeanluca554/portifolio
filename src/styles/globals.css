@@ -6,16 +6,16 @@
 
 @layer base {
   :root {
-    --first-color: 230deg 69% 61%;
-    --first-color-alt: 230deg 57% 53%;
-    --first-color-lighter: 230deg, 92%, 85%;
-    --title-color: 230deg, 8%, 15%;
-    --text-color: 230deg, 8%, 45%;
-    --text-color-light: 230deg, 8%, 65%;
-    --input-color: 230deg, 70%, 96%;
-    --body-color: 230deg, 60%, 99%;
-    --scroll-bar-color: 230deg, 12%, 90%;
-    --scroll-thumb-color: 230deg, 12%, 80%;
+    --first-color: 215deg 69% 61%;
+    --first-color-alt: 215deg 57% 53%;
+    --first-color-lighter: 215deg, 92%, 85%;
+    --title-color: 215deg, 8%, 15%;
+    --text-color: 215deg, 8%, 45%;
+    --text-color-light: 215deg, 8%, 65%;
+    --input-color: 215deg, 70%, 96%;
+    --body-color: 215deg, 60%, 50%;
+    --scroll-bar-color: 215deg, 12%, 90%;
+    --scroll-thumb-color: 215deg, 12%, 80%;
     /* ... */
   }
 }
