@@ -3,17 +3,22 @@ import Head from 'next/head';
 import ItemNavList from '@/components/ItemNavList';
 
 
-import { House, User, FileText, Briefcase, Image, PaperPlaneRight, X, SquaresFour, LinkedinLogo, WhatsappLogo, GithubLogo, MouseSimple, ArrowDown, DownloadSimple, BracketsCurly, Code } from "phosphor-react";
+import { House, User, FileText, Briefcase, Image, PaperPlaneRight, X, SquaresFour, LinkedinLogo, WhatsappLogo, GithubLogo, MouseSimple, ArrowDown, DownloadSimple, BracketsCurly, Code, GraduationCap } from "phosphor-react";
 import Blob from '@/components/Blob';
 import Button from '@/components/Button';
 import Skills from '@/components/Skills';
 import SkillsData from '@/components/SkillsData';
+import QualificationData from '@/components/QualificationData';
+import QualificationLine from '@/components/QualificationLine';
+import QualificationRounder from '@/components/QualificationRounder';
 
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenFront, setIsOpenFront] = useState(false);
   const [isOpenBack, setIsOpenBack] = useState(false);
+  const [activeEducation, setActiveEducation] = useState(true);
+  const [activeWork, setActiveWork] = useState(false);
 
   function openCloseFront() {
     if (isOpenBack) {
@@ -29,6 +34,20 @@ export default function Home() {
     setIsOpenBack(!isOpenBack)
   }
 
+  function openCloseEducation() {
+    if (!activeEducation) {
+      setActiveEducation(true)
+      setActiveWork(false)
+    }
+  }
+
+  function openCloseWork() {
+    if (!activeWork) {
+      setActiveEducation(false)
+      setActiveWork(true)
+    }
+  }
+
 
   return (
     <>
@@ -41,7 +60,7 @@ export default function Home() {
 
       <header className={`header w-full fixed bottom-0 left-0 z-100 bg-white`}>
         <nav className='nav max-w-4xl mx-6 h-12 flex justify-between items-center'>
-          <a href="#" className={`nav__logo ${isOpen ? 'hidden' : 'block'} text-title-color font-medium hover:text-first-color`}>Jean Luca</a>
+          <a href="#" className={`nav__logo ${isOpen ? 'hidden' : 'block'} text-gray-800 font-medium hover:text-first-color`}>Jean Luca</a>
 
           <div className={`nav__menu fixed w-full ${isOpen ? 'bottom-0' : 'bottom-[-100%]'} left-0 bg-white pt-8 px-6 pb-16 shadow-[0_-1px_4px_rgba(0,0,0,.15)] rounded-t-3xl duration-300 `}>
             <ul className="nav__list grid md:gap-6 grid-cols-3 gap-8">
@@ -174,7 +193,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="skills section mb-12" id="skills">
+        <section className="skills section pb-16" id="skills">
           <h2 className="section__title text-2xl font-semibold text-center text-gray-800">Habilidades </h2>
           <span className="section__subtitle block text-sm text-center mb-10 text-gray-500">Meu nível técnico</span>
 
@@ -236,6 +255,114 @@ export default function Home() {
             </div>
             <div>
             </div>
+          </div>
+        </section>
+
+        <section className="qualification section pb-16">
+          <h2 className="section__title text-2xl font-semibold text-center text-gray-800">Qualificações</h2>
+          <span className="section__subtitle block text-sm text-center mb-10 text-gray-500">Minha jornada pessoal</span>
+
+          <div className="qualification__container container">
+            <div className="qualification__tabs flex justify-evenly mb-8 ">
+              <div className={`qualification__button flex text-lg font-medium cursor-pointer ${activeEducation ? 'text-first-color' : 'text-gray-500'} hover:text-first-color`} onClick={openCloseEducation}>
+                <GraduationCap className='qualification__icon text-3xl mr-2' weight='bold' />Educação
+              </div>
+
+              <div className={`qualification__button flex text-lg font-medium cursor-pointer ${activeWork ? 'text-first-color' : 'text-gray-500'} hover:text-first-color`} onClick={openCloseWork}>
+                <Briefcase className='qualification__icon text-3xl mr-2' weight='bold' />Trabalho
+              </div>
+            </div>
+
+            <div className="qualification__sections">
+              <div className={`qualification__content ${activeEducation ? 'block' : 'hidden'}`} >
+                <div className="qualification__data grid grid-cols-12 gap-x-1">
+
+                  <QualificationData
+                    title='Análise e Desenvolvimento de Sistemas'
+                    subtitle='IFSP-CJO'
+                    period='2015 - 2021'
+                    div={false}
+                  />
+                  <div className='col-start-7 col-end-13'>
+                    <QualificationRounder />
+                    <QualificationLine />
+                  </div>
+
+
+                  <div className='col-span-4'></div>
+                  <div className='col-start-7 col-end-9'>
+                    <QualificationRounder />
+                    <QualificationLine />
+                  </div>
+                  <QualificationData
+                    title='Qualification 2'
+                    subtitle='IFSP-CJO'
+                    period='2015 - 2021'
+                    div={true}
+                  />
+
+                  <QualificationData
+                    title='Qualification 3'
+                    subtitle='IFSP-CJO'
+                    period='2015 - 2021'
+                    div={false}
+                  />
+                  <div className='col-start-7 col-end-13'>
+                    <QualificationRounder />
+                    <QualificationLine />
+                  </div>
+
+                  <div className='col-span-4'></div>
+                  <div className='col-start-7 col-end-9'>
+                    <QualificationRounder />
+                    {/* <QualificationLine /> */}
+                  </div>
+                  <QualificationData
+                    title='Qualification 4'
+                    subtitle='IFSP-CJO'
+                    period='2015 - 2021'
+                    div={true}
+                  />
+                </div>
+              </div>
+
+              <div className={`qualification__content ${activeWork ? 'block' : 'hidden'}`} >
+                <div className="qualification__data grid grid-cols-12 gap-x-1">
+                  <QualificationData
+                    title='Software Enginner'
+                    subtitle='Instituto Aro'
+                    period='2022-2023'
+                  />
+                  <div className='col-start-7 col-end-13'>
+                    <QualificationRounder />
+                    <QualificationLine />
+                  </div>
+
+                  <div className='col-span-4'></div>
+                  <div className='col-start-7 col-end-9'>
+                    <QualificationRounder />
+                    <QualificationLine />
+                  </div>
+
+                  <QualificationData
+                    title='Software Enginner'
+                    subtitle='Instituto Aro'
+                    period='2022-2023'
+                  />
+
+                  <QualificationData
+                    title='Software Enginner'
+                    subtitle='Instituto Aro'
+                    period='2022-2023'
+                  />
+                  <div className='col-start-7 col-end-13'>
+                    <QualificationRounder />
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
       </main>
